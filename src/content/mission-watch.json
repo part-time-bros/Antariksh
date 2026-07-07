@@ -1,0 +1,34 @@
+{
+  "lastUpdated": "2026-07",
+  "note": "Reflects the latest available at time of writing. Update this file by hand as these events resolve — no live API or CMS needed.",
+  "items": [
+    {
+      "id": "vikram-1",
+      "status": "upcoming",
+      "window": "2026-07-12 to 2026-08-04",
+      "title": "Skyroot's Vikram-1 — \"Mission Aagaman\"",
+      "detail": "India's first private orbital launch attempt, targeting a 450 km, 60° inclination low Earth orbit. Vikram-1 can carry up to 350 kg to LEO. All stages were fully stacked at the pad as of early July 2026."
+    },
+    {
+      "id": "gaganyaan-g1",
+      "status": "upcoming",
+      "window": "H2 2026",
+      "title": "Gaganyaan G1 uncrewed test flight",
+      "detail": "Carries the humanoid stand-in Vyommitra. Originally eyed for February 2026, now targeted for the second half of the year following extra review after the EOS-N1 anomaly. G2, G3, and the first crewed flight (H1, targeted 2027) follow."
+    },
+    {
+      "id": "pslv-review",
+      "status": "in-progress",
+      "window": "ongoing",
+      "title": "PSLV third-stage anomaly review",
+      "detail": "An ISRO expert committee is reviewing two consecutive anomalies — EOS-09 (May 2025) and EOS-N1 (Jan 2026) — on a vehicle with 60+ successful missions since 1994."
+    },
+    {
+      "id": "chandrayaan4-approved",
+      "status": "in-progress",
+      "window": "target 2028",
+      "title": "Chandrayaan-4 in development",
+      "detail": "Cabinet-approved lunar sample-return mission requiring two LVM3 launches and in-orbit docking of five modules."
+    }
+  ]
+}

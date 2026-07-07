@@ -1,0 +1,340 @@
+{
+  "zones": [
+    {
+      "id": "genesis",
+      "order": 1,
+      "railRange": [
+        0.0,
+        0.0703
+      ],
+      "compartment": "Flight Deck",
+      "era": "Genesis \u00b7 1962\u20131972",
+      "headline": "Where India's space programme actually began",
+      "paragraphs": [
+        "In 1962, physicist Vikram Sarabhai persuaded the Indian government to form the Indian National Committee for Space Research, with Homi Bhabha's backing. His argument was unusual for the era: a poor country had no business chasing a space race for its own sake \u2014 but it had every reason to use satellites to solve real problems of literacy, agriculture, and connectivity, at scale.",
+        "On 21 November 1963, a US-supplied Nike-Apache sounding rocket lifted off from a new launch station at Thumba, near Thiruvananthapuram \u2014 chosen for sitting almost exactly on the geomagnetic equator, not for its infrastructure. In the earliest years, a local church served as the payload assembly room, and parts moved around the site by bicycle and bullock cart.",
+        "ISRO was formally established on 15 August 1969, superseding INCOSPAR, still under Sarabhai's leadership. He died suddenly on 30 December 1971, at 52. Satish Dhawan took over as chairman in 1972, the same year the Department of Space was created \u2014 the administrative shape ISRO still holds today."
+      ],
+      "stats": [
+        {
+          "label": "Founded",
+          "value": "1969"
+        },
+        {
+          "label": "First launch",
+          "value": "1963"
+        },
+        {
+          "label": "Founder",
+          "value": "Vikram Sarabhai"
+        }
+      ],
+      "timelineRefs": [
+        "1962-incospar",
+        "1963-thumba",
+        "1969-isro-founded",
+        "1971-sarabhai-death",
+        "1972-dos-created"
+      ],
+      "interactions": [
+        "thumba-callout",
+        "sarabhai-quote"
+      ]
+    },
+    {
+      "id": "learning-to-fly",
+      "order": 2,
+      "railRange": [
+        0.0703,
+        0.1374
+      ],
+      "compartment": "Mid-Deck",
+      "era": "Learning to Fly \u00b7 1972\u20131993",
+      "headline": "The two decades that built a launch capability from nothing",
+      "paragraphs": [
+        "Aryabhata, India's first satellite, reached orbit on 19 April 1975 \u2014 on a Soviet rocket, since India had no orbital launcher of its own yet. Bhaskara-1, an experimental Earth-observation satellite, followed in 1979.",
+        "That changed on 18 July 1980, when the SLV-3 \u2014 India's first indigenously built launch vehicle \u2014 placed the Rohini satellite into orbit from Sriharikota. It's the milestone that matters most here: the moment India stopped needing someone else's rocket. The follow-on ASLV programme (1987\u20131994) had a rougher record, but it fed directly into the propulsion and guidance knowledge that made PSLV possible.",
+        "Meanwhile INSAT-1B (1983) opened India's operational communications-satellite era, and IRS-1A (1988) opened the Indian Remote Sensing programme \u2014 both still flying today, as the INSAT/GSAT and Resourcesat/Cartosat families."
+      ],
+      "stats": [
+        {
+          "label": "First Indian orbital launch",
+          "value": "1980, SLV-3"
+        },
+        {
+          "label": "SLV-3 payload to LEO",
+          "value": "~40 kg"
+        },
+        {
+          "label": "Modern PSLV payload to LEO",
+          "value": "~3.8 t"
+        }
+      ],
+      "timelineRefs": [
+        "1975-aryabhata",
+        "1979-bhaskara1",
+        "1980-slv3-rohini",
+        "1987-aslv",
+        "1981-apple",
+        "1983-insat1b",
+        "1988-irs1a"
+      ],
+      "interactions": [
+        "then-vs-now-slider"
+      ]
+    },
+    {
+      "id": "human-spaceflight",
+      "order": 3,
+      "railRange": [
+        0.1374,
+        0.2282
+      ],
+      "compartment": "Airlock",
+      "era": "Human Spaceflight",
+      "headline": "Things that happened to a person, not to hardware",
+      "paragraphs": [
+        "Squadron Leader Rakesh Sharma became the first Indian in space on 3 April 1984, flying aboard Soyuz T-11 to the Salyut 7 space station under an Indo-Soviet agreement. Asked by Prime Minister Indira Gandhi how India looked from orbit, his reply \u2014 echoing a line from Iqbal about India looking better than the whole world \u2014 became one of the most quoted moments in Indian spaceflight history.",
+        "It would be 41 years before another Indian flew. ISRO announced its own human-spaceflight programme, Gaganyaan (\"celestial vehicle\"), in a 2018 Independence Day address. Four Indian Air Force test pilots \u2014 Prasanth Nair, Ajit Krishnan, Angad Pratap, and Shubhanshu Shukla \u2014 were named as astronaut-designates, or gaganyatris, in early 2024.",
+        "On 25 June 2025, Shubhanshu Shukla launched aboard Axiom Mission 4, becoming the first Indian to visit the International Space Station and only the second Indian ever to fly in space. He ran roughly 60 experiments over two and a half weeks and returned on 15 July 2025, later receiving the Ashoka Chakra, India's highest peacetime gallantry decoration.",
+        "Gaganyaan itself is proceeding in careful, uncrewed steps: a crew-escape-system abort test (TV-D1) succeeded in October 2023, and an uncrewed orbital test carrying the humanoid stand-in Vyommitra \u2014 designated G1 \u2014 is targeted for 2026, ahead of G2, G3, and the first crewed flight, H1, targeted for 2027."
+      ],
+      "stats": [
+        {
+          "label": "First Indian in space",
+          "value": "1984, Rakesh Sharma"
+        },
+        {
+          "label": "First Indian ISS visit",
+          "value": "2025, Shubhanshu Shukla"
+        },
+        {
+          "label": "First crewed Gaganyaan flight",
+          "value": "2027 (target)"
+        }
+      ],
+      "timelineRefs": [
+        "1984-rakesh-sharma",
+        "2018-gaganyaan-announced",
+        "2024-gaganyatris-named",
+        "2023-tvd1",
+        "2025-spadex",
+        "2025-shux-iss",
+        "2026-ashoka-chakra",
+        "2026-gaganyaan-g1",
+        "2027-gaganyaan-h1"
+      ],
+      "interactions": [
+        "gaganyatri-roster"
+      ]
+    },
+    {
+      "id": "workhorse-decades",
+      "order": 4,
+      "railRange": [
+        0.2282,
+        0.3973
+      ],
+      "compartment": "Payload Bay",
+      "era": "The Workhorse Decades",
+      "headline": "The rocket that made everything else in this ship possible",
+      "paragraphs": [
+        "The Polar Satellite Launch Vehicle is ISRO's most-flown rocket. Its debut, PSLV-D1 in 1993, failed; its second flight, PSLV-D2 in 1994, succeeded \u2014 and from there it became the vehicle that carried Chandrayaan-1, the Mars Orbiter Mission, Astrosat, and Aditya-L1, lifting roughly 1.75 tonnes to sun-synchronous orbit or 3.8 tonnes to low Earth orbit depending on configuration.",
+        "The Geosynchronous Satellite Launch Vehicle followed in 2001 for heavier communications satellites, and its successor LVM3 \u2014 nicknamed Bahubali \u2014 can lift roughly 4 tonnes to geostationary transfer orbit or 10 tonnes to low Earth orbit, with a perfect record across its most recent nine launches. On 15 February 2017, PSLV-C37 launched 104 satellites in a single mission, a world record at the time.",
+        "This era has real setbacks too, told straight rather than glossed over: PSLV suffered two consecutive third-stage anomalies, EOS-09 in May 2025 and EOS-N1 in January 2026, both under active review. It's the same vehicle that has flown 60-plus successful missions since 1994 \u2014 a temporary setback under investigation, not a reversal of the record, and consistent with a programme where SLV-3 itself failed once before succeeding, and Chandrayaan-2's 2019 lander failure was corrected within four years by Chandrayaan-3.",
+        "ISRO's commercial arm, NewSpace India Limited, now manages commercial PSLV and LVM3 launch contracts, while a HAL\u2013L&T-led industry consortium is taking over full PSLV manufacturing under a public-private partnership."
+      ],
+      "stats": [
+        {
+          "label": "PSLV missions flown",
+          "value": "60+"
+        },
+        {
+          "label": "PSLV-C37 record",
+          "value": "104 satellites, 1 launch"
+        },
+        {
+          "label": "LVM3 recent record",
+          "value": "9/9 successful"
+        }
+      ],
+      "timelineRefs": [
+        "1993-pslv-d1-fails",
+        "1994-pslv-d2",
+        "2001-gslv-first",
+        "2017-pslv-104-sats",
+        "2025-eos09-anomaly",
+        "2026-eos-n1-anomaly"
+      ],
+      "interactions": [
+        "payload-chart",
+        "satellite-burst"
+      ]
+    },
+    {
+      "id": "reaching-beyond-earth",
+      "order": 5,
+      "railRange": [
+        0.3973,
+        0.5226
+      ],
+      "compartment": "Canadarm / Remote Manipulator System",
+      "era": "Reaching Beyond Earth",
+      "headline": "Everywhere India has pointed a spacecraft since 2008",
+      "paragraphs": [
+        "Chandrayaan-1, launched 22 October 2008, was India's first mission beyond Earth orbit. Its Moon Impact Probe struck the lunar surface that November, and in 2009 its NASA-supplied Moon Mineralogy Mapper confirmed widespread water molecules across the lunar surface \u2014 one of the more significant single findings in modern lunar science.",
+        "The Mars Orbiter Mission, Mangalyaan, launched 5 November 2013 and reached Mars orbit on 24 September 2014 \u2014 on its first attempt, making India the first Asian nation to reach Mars, at a cost widely reported as less than the production budget of the film Gravity, released the same year.",
+        "Chandrayaan-2 (2019) reached lunar orbit successfully, but its Vikram lander lost contact roughly 2.1 km above the surface during descent. Chandrayaan-3 (2023) corrected exactly what went wrong: Vikram soft-landed near the lunar south pole at what's now called Shiv Shakti Point, the fourth country ever to soft-land on the Moon and the first this close to the pole.",
+        "Aditya-L1, India's first solar mission, reached its halo orbit at the Sun-Earth L1 point in January 2024. And in July 2025, NISAR \u2014 a genuine joint-hardware collaboration with NASA, not just an instrument-hosting deal \u2014 became the first satellite to fly dual-frequency radar, now streaming roughly 85 terabytes of freely available Earth-imaging data per day."
+      ],
+      "stats": [
+        {
+          "label": "Mars orbit, first attempt",
+          "value": "2014"
+        },
+        {
+          "label": "Moon landing, south pole",
+          "value": "2023, Chandrayaan-3"
+        },
+        {
+          "label": "NISAR data volume",
+          "value": "~85 TB/day"
+        }
+      ],
+      "timelineRefs": [
+        "2008-chandrayaan1",
+        "2009-water-on-moon",
+        "2013-mom-launch",
+        "2014-mom-orbit",
+        "2015-astrosat",
+        "2019-chandrayaan2",
+        "2023-chandrayaan3",
+        "2023-aditya-l1-launch",
+        "2024-aditya-l1-halo",
+        "2025-nisar"
+      ],
+      "interactions": [
+        "trajectory-selector"
+      ]
+    },
+    {
+      "id": "engineering-the-engines",
+      "order": 6,
+      "railRange": [
+        0.5226,
+        0.6885
+      ],
+      "compartment": "Aft Propulsion Bay",
+      "era": "Engineering the Engines",
+      "headline": "The hardest problem in this entire history",
+      "paragraphs": [
+        "SLV-3's 1980 success rested on solid-fuel motor technology carried over from the sounding-rocket programme. ASLV and then PSLV added liquid-fuelled stages \u2014 the Vikas engine, derived under license from French Viking technology \u2014 for finer trajectory control.",
+        "The hardest technical problem in this whole history was cryogenic upper-stage propulsion. A planned 1990s technology transfer from Russia was blocked over US sanctions concerns, so ISRO's Liquid Propulsion Systems Centre spent most of a decade building an indigenous cryogenic engine \u2014 first CE-7.5, then the more powerful CE-20 \u2014 from scratch. That engine now powers LVM3's upper stage, a rocket that combines two solid S200 boosters, a liquid L110 core, and the C25 cryogenic stage for a liftoff mass around 640 tonnes.",
+        "The next step is the Next Generation Launch Vehicle: a proposed three-stage, partially reusable rocket burning LOX/kerosene, targeting roughly 30 tonnes to low Earth orbit, meant to eventually take over PSLV's routine workload at a fraction of the cost. It's not only ISRO's story from here \u2014 Skyroot Aerospace's Vikram-I flies an in-house solid-and-liquid stack, and Agnikul Cosmos flies Agnilet, the world's first single-piece 3D-printed rocket engine."
+      ],
+      "stats": [
+        {
+          "label": "LVM3 liftoff mass",
+          "value": "~640 t"
+        },
+        {
+          "label": "LVM3 to GTO",
+          "value": "~4\u20134.5 t"
+        },
+        {
+          "label": "NGLV target to LEO",
+          "value": "~30 t"
+        }
+      ],
+      "timelineRefs": [
+        "1980-slv3-rohini",
+        "1987-aslv",
+        "2014-lvm3-test"
+      ],
+      "interactions": [
+        "payload-chart",
+        "engine-diagram"
+      ]
+    },
+    {
+      "id": "whats-next",
+      "order": 7,
+      "railRange": [
+        0.6885,
+        0.854
+      ],
+      "compartment": "Forward Flight-Deck Windows",
+      "era": "What's Next \u00b7 2026\u20132040",
+      "headline": "Same room as Zone 1 \u2014 now looking the other way",
+      "paragraphs": [
+        "Gaganyaan's crewed flight (H1) is targeted for 2027, after the uncrewed G1, G2, and G3 test flights. Bharatiya Antariksh Station, India's own space station, expects its first module in 2028 and full operation by 2035. Chandrayaan-4, a lunar sample-return mission approved in September 2024, will need two separate LVM3 launches and in-orbit docking of five modules, targeting roughly 2\u20133 kg of lunar material from near the south pole around 2028.",
+        "A joint mission with Japan's JAXA \u2014 now referred to as Chandrayaan-5/LUPEX \u2014 will send a rover to the same south-polar region hunting for water ice, and a Venus Orbiter Mission (Shukrayaan-1) is in active planning. ISRO's own leadership frames all of this as building toward a crewed Indian Moon landing, discussed publicly around 2040.",
+        "And right now, as this exhibit was built: Skyroot Aerospace's Vikram-1 \u2014 India's first privately developed orbital-class rocket \u2014 has a launch window of 12 July to 4 August 2026 for its maiden flight, \"Mission Aagaman.\" That's not settled history yet. Check the Mission Watch panel for the latest."
+      ],
+      "stats": [
+        {
+          "label": "Next crewed flight",
+          "value": "Gaganyaan H1, 2027"
+        },
+        {
+          "label": "First station module",
+          "value": "BAS-01, 2028"
+        },
+        {
+          "label": "Moon landing vision",
+          "value": "~2040"
+        }
+      ],
+      "timelineRefs": [
+        "2026-vikram1-window",
+        "2026-gaganyaan-g1",
+        "2027-gaganyaan-h1",
+        "2028-chandrayaan4-target",
+        "2028-bas01",
+        "2035-bas-full",
+        "lupex-chandrayaan5",
+        "shukrayaan-1-planned",
+        "2040-moon-landing-vision"
+      ],
+      "interactions": [
+        "roadmap-scrubber"
+      ]
+    },
+    {
+      "id": "by-the-numbers",
+      "order": 8,
+      "railRange": [
+        0.854,
+        1.0
+      ],
+      "compartment": "Exterior Payload Bay Walls",
+      "era": "By the Numbers",
+      "headline": "The whole history, from outside the doors",
+      "paragraphs": [
+        "Six decades condensed onto the bay wall: launch-vehicle payload capacity climbing from SLV-3's roughly 40 kg to NGLV's proposed 30 tonnes, a growing constellation of INSAT/GSAT, IRS/Resourcesat, and NavIC satellites, and a Mars mission that reached orbit for less than a Hollywood film's production budget.",
+        "None of it happened alone. The Soviet Union launched Aryabhata and flew Rakesh Sharma; France's Viking engine became the licensed ancestor of the Vikas engine; NASA co-built NISAR and flew Shubhanshu Shukla to the ISS on Axiom-4; Japan's JAXA is a partner on the coming LUPEX rover; Europe's Ariane launched APPLE and Aryabhata's successors."
+      ],
+      "stats": [
+        {
+          "label": "First orbital launch to now",
+          "value": "1980 \u2192 2026"
+        },
+        {
+          "label": "Payload growth",
+          "value": "~40 kg \u2192 ~30 t (NGLV target)"
+        },
+        {
+          "label": "Nations collaborated with",
+          "value": "USSR/Russia, France, USA, Japan, Europe"
+        }
+      ],
+      "timelineRefs": [],
+      "interactions": [
+        "payload-chart",
+        "satellites-over-time-chart",
+        "patch-gallery",
+        "collaboration-list"
+      ]
+    }
+  ]
+}
