@@ -9,7 +9,7 @@ export default function ReadFallback() {
   return (
     <main className="min-h-screen bg-[#0B0B0E] text-[#EDEDE6] px-5 py-10 sm:px-10">
       <div className="max-w-2xl mx-auto">
-        <a href="/" className="text-xs text-[#C9A84C] underline underline-offset-2">
+        <a href={import.meta.env.BASE_URL} className="text-xs text-[#C9A84C] underline underline-offset-2">
           ← Back to the 3D experience
         </a>
         <h1

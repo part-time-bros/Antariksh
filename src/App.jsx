@@ -55,7 +55,8 @@ export default function App() {
   }, [setReducedMotion])
 
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '/'
-  if (pathname === '/read') return <ReadFallback />
+  const readPath = `${import.meta.env.BASE_URL}read`
+  if (pathname === readPath || pathname === `${readPath}/`) return <ReadFallback />
 
   return hasOnboarded ? <MainExperience /> : <Onboarding />
 }

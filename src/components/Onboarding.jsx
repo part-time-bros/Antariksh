@@ -74,7 +74,7 @@ export default function Onboarding() {
             Begin the journey
           </button>
           <a
-            href="/read"
+            href={`${import.meta.env.BASE_URL}read`}
             className="mt-4 text-xs text-[#EDEDE6]/45 underline underline-offset-2 min-h-[32px] flex items-center"
           >
             Prefer to read? Text-only version →

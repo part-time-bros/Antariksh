@@ -69,6 +69,14 @@ Three things had to be solved precisely, not eyeballed, since I still can't rend
 - The "fuller 6DoF, once arrived" free-look toggle (Section 4.2) — `freeLookMode` exists in the store, nothing consumes it yet.
 - Door open/close animation — the source model's separate door-prt/door-stb sub-files have bounding boxes that don't cleanly imply their hinge geometry without visual iteration, so I didn't guess at their placement. The main model reads as open-bay already (no door material in its own mesh).
 
+## 13. GitHub Pages needed a base path + an actual build step
+
+You deployed via GitHub Pages instead of Vercel (fine — just a different target than what `vercel.json` assumed). Two things were broken: the repo had the raw source committed, including `index.html`'s `<script src="/src/main.jsx">`, which browsers can't run directly (JSX needs a build step, and GitHub Pages doesn't build anything for you — it's a static file host, not a CI system); and even a proper build defaults to root-relative paths (`/assets/...`), while a GitHub Pages *project* site is served from `/<repo-name>/`, so every asset request would 404 against the actual domain root instead.
+
+Fixed with three changes: `vite.config.js` now sets `base: '/Antariksh/'` only when a `GITHUB_PAGES` env var is set (Vercel still gets `base: '/'`, unaffected); every hardcoded absolute path in the app itself (`ShuttleModel.jsx`'s model URL, the `/read` route check and both links to it) now reads `import.meta.env.BASE_URL` instead, since Vite's automatic base-rewriting only covers things it recognizes as assets in HTML/imports, not string literals used at runtime — this one's easy to miss and would've meant the shuttle model silently 404'd even after the base path was otherwise correct; and `.github/workflows/deploy.yml` builds and deploys on every push, so it's push-and-forget like Vercel. Verified by actually building with `GITHUB_PAGES=true` and grepping the output — every path in `dist/index.html` and the model URL baked into the JS bundle came out correctly prefixed, not just assumed to.
+
+One manual step that has to happen in the GitHub UI (can't be done from a commit): **Settings → Pages → Source → GitHub Actions**, once, on the repo.
+
 ## What I couldn't verify from this environment
 
 - **Visual QA, still.** Geometry math (axis remap, scale, bay offset) is verified numerically the same rigorous way as decision #1, but I still haven't *seen* any of this render — no WebGL here. This is now the single most important thing to check first: `npm run dev`, look at the ship, and nudge `MODEL_OFFSET` in `ShuttleModel.jsx` if the bay doesn't line up with the rail the way the numbers predict.

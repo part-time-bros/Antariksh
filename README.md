@@ -17,7 +17,11 @@ npm run dev      # http://localhost:5173
 
 ## Deploy
 
-Push to GitHub, Vercel auto-deploys. `vercel.json` rewrites every path to `index.html` so a direct visit to `/read` (the text-only fallback) works instead of 404ing — `App.jsx` does the actual routing client-side with a plain `pathname` check, no router dependency.
+**GitHub Pages** (what you're using): `.github/workflows/deploy.yml` builds with the correct base path and deploys automatically on every push to `main` — same "push and it updates" behavior as Vercel. **One-time setup**, done once in the GitHub UI, not from Codespaces: repo → **Settings → Pages → Source → GitHub Actions**. Without this one click, Pages serves whatever raw files are in the repo instead of running the workflow, which is exactly what caused the blank page.
+
+The site will be at `https://<your-username>.github.io/<repo-name>/` — note the trailing `/<repo-name>/`. `vite.config.js`'s `base` is hardcoded to `/Antariksh/` to match; if you ever rename the repo, update that too.
+
+**Vercel** (if you switch back): push to GitHub, Vercel auto-deploys, no setup needed — it serves from the root so the GitHub-Pages-specific `base` doesn't apply (the config only activates it when `GITHUB_PAGES=true` is set, which only the Actions workflow sets). `vercel.json` rewrites every path to `index.html` so `/read` works there too.
 
 ## Structure
 

@@ -5,7 +5,7 @@ import { useGLTF } from '@react-three/drei'
 // Real NASA public-domain Space Shuttle model (Section 11.1's Phase-4 asset,
 // now in place — see DECISIONS.md #12 for sourcing, licensing, the axis-remap
 // derivation, and the bay-alignment offset below).
-const MODEL_URL = '/models/space-shuttle.glb'
+const MODEL_URL = `${import.meta.env.BASE_URL}models/space-shuttle.glb`
 const INCH_TO_METER = 0.0254
 
 // Model native axes -> scene axes, solved numerically (not eyeballed) via
