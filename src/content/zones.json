@@ -3,10 +3,6 @@
     {
       "id": "genesis",
       "order": 1,
-      "railRange": [
-        0.0,
-        0.0703
-      ],
       "compartment": "Flight Deck",
       "era": "Genesis \u00b7 1962\u20131972",
       "headline": "Where India's space programme actually began",
@@ -44,10 +40,6 @@
     {
       "id": "learning-to-fly",
       "order": 2,
-      "railRange": [
-        0.0703,
-        0.1374
-      ],
       "compartment": "Mid-Deck",
       "era": "Learning to Fly \u00b7 1972\u20131993",
       "headline": "The two decades that built a launch capability from nothing",
@@ -86,10 +78,6 @@
     {
       "id": "human-spaceflight",
       "order": 3,
-      "railRange": [
-        0.1374,
-        0.2282
-      ],
       "compartment": "Airlock",
       "era": "Human Spaceflight",
       "headline": "Things that happened to a person, not to hardware",
@@ -131,10 +119,6 @@
     {
       "id": "workhorse-decades",
       "order": 4,
-      "railRange": [
-        0.2282,
-        0.3973
-      ],
       "compartment": "Payload Bay",
       "era": "The Workhorse Decades",
       "headline": "The rocket that made everything else in this ship possible",
@@ -174,10 +158,6 @@
     {
       "id": "reaching-beyond-earth",
       "order": 5,
-      "railRange": [
-        0.3973,
-        0.5226
-      ],
       "compartment": "Canadarm / Remote Manipulator System",
       "era": "Reaching Beyond Earth",
       "headline": "Everywhere India has pointed a spacecraft since 2008",
@@ -220,10 +200,6 @@
     {
       "id": "engineering-the-engines",
       "order": 6,
-      "railRange": [
-        0.5226,
-        0.6885
-      ],
       "compartment": "Aft Propulsion Bay",
       "era": "Engineering the Engines",
       "headline": "The hardest problem in this entire history",
@@ -259,10 +235,6 @@
     {
       "id": "whats-next",
       "order": 7,
-      "railRange": [
-        0.6885,
-        0.854
-      ],
       "compartment": "Forward Flight-Deck Windows",
       "era": "What's Next \u00b7 2026\u20132040",
       "headline": "Same room as Zone 1 \u2014 now looking the other way",
@@ -303,10 +275,6 @@
     {
       "id": "by-the-numbers",
       "order": 8,
-      "railRange": [
-        0.854,
-        1.0
-      ],
       "compartment": "Exterior Payload Bay Walls",
       "era": "By the Numbers",
       "headline": "The whole history, from outside the doors",

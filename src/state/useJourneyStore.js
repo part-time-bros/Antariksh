@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { getZoneAt, ZONES } from '../scenes/Rail'
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -7,47 +6,42 @@ const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export const useJourneyStore = create((set, get) => ({
-  // --- Rail position -------------------------------------------------
-  t: 0,
-  activeZoneId: ZONES[0].id,
-
-  setT: (t) => {
-    const clamped = Math.min(1, Math.max(0, t))
-    if (clamped === get().t) return
-    const zone = getZoneAt(clamped)
-    set({ t: clamped, activeZoneId: zone.id })
-  },
-
-  // --- Held input (keyboard + on-screen chevrons share this) ---------
-  held: { forward: false, backward: false },
+  // --- Held movement input (keyboard + touch joystick share this) -----
+  // 6-direction free flight: forward/back, left/right (strafe), up/down.
+  held: { forward: false, backward: false, left: false, right: false, up: false, down: false },
   setHeld: (direction, isDown) =>
     set((s) => ({ held: { ...s.held, [direction]: isDown } })),
 
-  // --- Map-jump animation (tap a zone on the cross-section map) ------
-  jumpTarget: null, // { from, to, startedAt } while animating
-  jumpTo: (targetT) => {
-    const clamped = Math.min(1, Math.max(0, targetT))
+  // --- Which zone panel is nearest/focused ------------------------------
+  // Updated imperatively from CameraRig's useFrame via getState().setFocusedZone
+  // (proximity-based, not subscribed reactively every frame — only changes
+  // on actual crossing of FOCUS_RADIUS, so this is cheap to subscribe to).
+  focusedZoneId: null,
+  setFocusedZone: (id) => {
+    if (get().focusedZoneId === id) return
+    set({ focusedZoneId: id })
+  },
+
+  // --- Teleport-to-zone (tap a waypoint in the nav) ---------------------
+  teleportTarget: null, // { position, lookAt, startedAt } while animating
+  teleportTo: (position, lookAt) => {
     if (get().reducedMotion) {
-      get().setT(clamped)
+      set({ teleportTarget: { instant: true, position, lookAt } })
       return
     }
-    set({ jumpTarget: { from: get().t, to: clamped, startedAt: performance.now() } })
+    set({ teleportTarget: { from: null, position, lookAt, startedAt: performance.now() } })
   },
-  clearJump: () => set({ jumpTarget: null }),
+  clearTeleport: () => set({ teleportTarget: null }),
 
-  // --- Free-look (a few degrees off the rail's forward direction) ----
-  freeLookMode: false, // the optional fuller explore-in-place toggle (Section 4.2)
-  toggleFreeLookMode: () => set((s) => ({ freeLookMode: !s.freeLookMode })),
+  // --- UI chrome ---------------------------------------------------------
+  navOpen: false,
+  toggleNav: () => set((s) => ({ navOpen: !s.navOpen })),
+  missionWatchOpen: false,
+  toggleMissionWatch: () => set((s) => ({ missionWatchOpen: !s.missionWatchOpen })),
 
-  // --- UI chrome -------------------------------------------------------
-  panelOpen: true,
-  togglePanel: () => set((s) => ({ panelOpen: !s.panelOpen })),
-  mapCollapsed: false,
-  toggleMap: () => set((s) => ({ mapCollapsed: !s.mapCollapsed })),
-
-  // --- Onboarding ------------------------------------------------------
+  // --- Onboarding ----------------------------------------------------------
   hasOnboarded: false,
-  completeOnboarding: () => set({ hasOnboarded: true, t: 0, activeZoneId: ZONES[0].id }),
+  completeOnboarding: () => set({ hasOnboarded: true }),
 
   // --- Accessibility -----------------------------------------------------
   reducedMotion: prefersReducedMotion(),

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
 import gsap from 'gsap'
 import ShuttleModel from '../scenes/ShuttleModel'
 import Starfield from '../scenes/Starfield'
@@ -44,10 +45,14 @@ export default function Onboarding() {
 
   return (
     <div className="fixed inset-0 z-30 bg-[#08080A] overflow-hidden">
-      <Canvas camera={{ position: [0, 2.5, 30], fov: 44 }} dpr={[1, 1.5]}>
-        <ambientLight intensity={0.45} />
-        <directionalLight position={[22, 18, 12]} intensity={1.5} color="#FFF3E2" />
-        <directionalLight position={[-18, -8, -14]} intensity={0.2} color="#3A6FB0" />
+      <Canvas
+        camera={{ position: [0, 2.5, 30], fov: 44 }}
+        dpr={[1, 1.5]}
+        gl={{ toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.15 }}
+      >
+        <ambientLight intensity={0.4} />
+        <directionalLight position={[22, 18, 12]} intensity={2} color="#FFF3E2" />
+        <directionalLight position={[-18, -8, -14]} intensity={0.3} color="#3A6FB0" />
         <Starfield />
         <HeroRig reducedMotion={reducedMotion} />
       </Canvas>
@@ -62,8 +67,8 @@ export default function Onboarding() {
             ANTARIKSH YATRA
           </h1>
           <p ref={subRef} className="text-sm sm:text-base text-[#EDEDE6]/70 text-center mt-3 max-w-md">
-            Sixty years of the Indian space programme, staged inside a Space Shuttle's own
-            compartments — nose to tail, 1962 to now.
+            Sixty years of the Indian space programme. Fly freely around a Space Shuttle
+            orbiter — every era is out there somewhere, waiting to be found.
           </p>
           <button
             ref={ctaRef}

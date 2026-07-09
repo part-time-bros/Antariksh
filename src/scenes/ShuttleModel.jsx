@@ -13,9 +13,9 @@ const INCH_TO_METER = 0.0254
 const MODEL_ROTATION = [-Math.PI / 2, 0, -Math.PI / 2]
 
 // Bounding-box-center offset that brings the model's actual payload-bay
-// region into alignment with the bay-transit rail points already tuned
-// in Rail.js (computed from the source file's un-quantized geometry —
-// the shipped, meshopt-compressed file can't be read this way directly).
+// region to the scene-space position the zone anchors in ZoneAnchors.js
+// assume (computed from the source file's un-quantized geometry — the
+// shipped, meshopt-compressed file can't be read this way directly).
 const MODEL_OFFSET = [0, 2.76, -7.25]
 
 const METAL = '#D8D4C8'
@@ -45,9 +45,9 @@ function CanadarmSegment({ a, b, radius }) {
 }
 
 function Canadarm() {
-  // Mounted on the payload bay's port sill, reaching out to exactly the
-  // Rail's Zone-5 control point — the real model doesn't include an arm
-  // (no such material anywhere in its 42), so this stays procedural.
+  // Mounted on the payload bay's port sill, reaching out to near the
+  // "reaching-beyond-earth" zone's anchor in ZoneAnchors.js — the real
+  // model doesn't include an arm (no such material anywhere in its 42),
   const base = [-2.35, 2.1, -2]
   const elbow = [-4.6, 2.9, -5]
   const wrist = [-6.6, 3.7, -7.6]

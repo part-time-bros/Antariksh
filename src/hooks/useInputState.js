@@ -5,38 +5,50 @@ const isTypingTarget = (el) =>
   !!el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)
 
 /**
- * Owns the raw, high-frequency parts of input (wheel accumulation, drag
- * deltas) in a plain ref so the per-frame rail-drive loop can drain them
- * without subscribing to React state every frame. Keyboard press/release
- * is low-frequency, so it's fine to route straight into the Zustand store's
- * `held` flags — the same flags the on-screen chevrons (NavChevrons.jsx)
- * write to via press-and-hold.
+ * Full free-flight input: keyboard (WASD/arrows + Space/Shift for up/down)
+ * sets low-frequency `held` flags on the store; drag (mouse or touch) feeds
+ * a high-frequency look-delta ref so the per-frame flight loop can drain it
+ * without subscribing to React state every frame. The on-screen joystick
+ * (TouchJoystick.jsx) writes analog values into the same ref via the
+ * returned setters, so keyboard and touch can't fight each other.
  */
 export function useInputState() {
   const inputRef = useRef({
-    wheelDelta: 0,
     dragDeltaYaw: 0,
     dragDeltaPitch: 0,
     isDragging: false,
     lastPointer: null,
+    lastPointerId: null,
+    joystickForward: 0, // -1..1, written by TouchJoystick
+    joystickStrafe: 0, // -1..1
   })
 
   useEffect(() => {
     const { setHeld } = useJourneyStore.getState()
 
+    const keyMap = {
+      w: 'forward', W: 'forward', ArrowUp: 'forward',
+      s: 'backward', S: 'backward', ArrowDown: 'backward',
+      a: 'left', A: 'left', ArrowLeft: 'left',
+      d: 'right', D: 'right', ArrowRight: 'right',
+      ' ': 'up', e: 'up', E: 'up',
+      Shift: 'down', q: 'down', Q: 'down',
+    }
+
     const onKeyDown = (e) => {
       if (isTypingTarget(e.target)) return
-      if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') setHeld('forward', true)
-      if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') setHeld('backward', true)
+      const dir = keyMap[e.key]
+      if (dir) {
+        e.preventDefault()
+        setHeld(dir, true)
+      }
     }
     const onKeyUp = (e) => {
-      if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') setHeld('forward', false)
-      if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') setHeld('backward', false)
+      const dir = keyMap[e.key]
+      if (dir) setHeld(dir, false)
     }
-    // Don't strand the dolly mid-move if focus/visibility changes while a key is held.
     const releaseAll = () => {
-      setHeld('forward', false)
-      setHeld('backward', false)
+      ;['forward', 'backward', 'left', 'right', 'up', 'down'].forEach((d) => setHeld(d, false))
     }
 
     window.addEventListener('keydown', onKeyDown)
@@ -51,31 +63,31 @@ export function useInputState() {
     }
   }, [])
 
-  // Wheel/trackpad over the canvas drives the dolly directly (Section 4.1 —
-  // the one place "scroll" is welcome, since it's moving the camera through
-  // 3D space, not a page).
-  const onWheel = (e) => {
-    inputRef.current.wheelDelta += e.deltaY
-  }
-
-  // Pointer drag (mouse or touch) drives free-look only. Forward/backward
-  // touch movement is handled by the always-visible chevrons instead of a
-  // second, competing swipe gesture on the same canvas — see DECISIONS.md #4.
+  // Drag (mouse or a touch that isn't on the joystick) drives look only.
   const onPointerDown = (e) => {
+    if (e.target.closest('[data-joystick]')) return
     inputRef.current.isDragging = true
+    inputRef.current.lastPointerId = e.pointerId
     inputRef.current.lastPointer = { x: e.clientX, y: e.clientY }
   }
   const onPointerMove = (e) => {
     const s = inputRef.current
-    if (!s.isDragging || !s.lastPointer) return
+    if (!s.isDragging || s.lastPointerId !== e.pointerId || !s.lastPointer) return
     s.dragDeltaYaw += e.clientX - s.lastPointer.x
     s.dragDeltaPitch += e.clientY - s.lastPointer.y
     s.lastPointer = { x: e.clientX, y: e.clientY }
   }
-  const onPointerUp = () => {
+  const onPointerUp = (e) => {
+    if (inputRef.current.lastPointerId !== e.pointerId) return
     inputRef.current.isDragging = false
     inputRef.current.lastPointer = null
+    inputRef.current.lastPointerId = null
   }
 
-  return { inputRef, onWheel, onPointerDown, onPointerMove, onPointerUp }
+  const setJoystick = (forward, strafe) => {
+    inputRef.current.joystickForward = forward
+    inputRef.current.joystickStrafe = strafe
+  }
+
+  return { inputRef, onPointerDown, onPointerMove, onPointerUp, setJoystick }
 }

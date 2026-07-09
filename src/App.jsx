@@ -1,23 +1,24 @@
 import { useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
 import { AdaptiveDpr } from '@react-three/drei'
 import Scene from './scenes/Scene'
 import Onboarding from './components/Onboarding'
-import ContentPanel from './components/ContentPanel'
-import CrossSectionMap from './components/CrossSectionMap'
-import NavChevrons from './components/NavChevrons'
+import TeleportNav from './components/TeleportNav'
 import MissionWatchCard from './components/MissionWatchCard'
+import TouchJoystick from './components/TouchJoystick'
+import VerticalControls from './components/VerticalControls'
+import ControlsHint from './components/ControlsHint'
 import ReadFallback from './components/ReadFallback'
 import { useInputState } from './hooks/useInputState'
 import { useJourneyStore } from './state/useJourneyStore'
 
 function MainExperience() {
-  const { inputRef, onWheel, onPointerDown, onPointerMove, onPointerUp } = useInputState()
+  const { inputRef, onPointerDown, onPointerMove, onPointerUp, setJoystick } = useInputState()
 
   return (
     <div
       className="fixed inset-0 bg-[#08080A] touch-none"
-      onWheel={onWheel}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -25,17 +26,23 @@ function MainExperience() {
     >
       <Canvas
         dpr={[1, 1.6]}
-        gl={{ antialias: true, powerPreference: 'high-performance' }}
-        camera={{ fov: 50, near: 0.1, far: 400 }}
+        gl={{
+          antialias: true,
+          powerPreference: 'high-performance',
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.15,
+        }}
+        camera={{ fov: 55, near: 0.1, far: 400 }}
         performance={{ min: 0.5 }}
       >
         <AdaptiveDpr pixelated />
         <Scene inputRef={inputRef} />
       </Canvas>
-      <ContentPanel />
-      <CrossSectionMap />
-      <NavChevrons />
+      <TeleportNav />
       <MissionWatchCard />
+      <TouchJoystick setJoystick={setJoystick} />
+      <VerticalControls />
+      <ControlsHint />
     </div>
   )
 }
