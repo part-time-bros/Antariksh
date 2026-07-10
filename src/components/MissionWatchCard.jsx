@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import missionWatch from '../content/mission-watch.json'
+import { audioEngine } from '../audio/audioEngine'
 
 const STATUS_STYLES = {
   upcoming: { bg: '#1B4B43', label: 'Upcoming' },
@@ -14,7 +15,10 @@ export default function MissionWatchCard() {
     <div className="fixed top-3 right-3 z-20 w-[min(82vw,300px)]">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          audioEngine.playClick()
+          setOpen((o) => !o)
+        }}
         className="w-full flex items-center justify-between rounded-t-xl bg-black/65 backdrop-blur border border-white/10 px-3 py-2.5 min-h-[44px]"
         aria-expanded={open}
       >

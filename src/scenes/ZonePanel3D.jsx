@@ -1,9 +1,10 @@
-import { Suspense, useMemo } from 'react'
+import { Suspense, useEffect, useMemo } from 'react'
 import { Html } from '@react-three/drei'
 import { useJourneyStore } from '../state/useJourneyStore'
 import { ZONES } from './ZoneAnchors'
 import timelineData from '../content/timeline.json'
 import { INTERACTION_COMPONENTS } from '../components/ZoneInteractions'
+import { audioEngine } from '../audio/audioEngine'
 
 const timelineById = Object.fromEntries(timelineData.events.map((e) => [e.id, e]))
 const zonesById = Object.fromEntries(ZONES.map((z) => [z.id, z]))
@@ -84,6 +85,11 @@ function PanelContent({ zone }) {
 
 export default function ZonePanel3D() {
   const focusedZoneId = useJourneyStore((s) => s.focusedZoneId)
+
+  useEffect(() => {
+    if (focusedZoneId) audioEngine.playChime()
+  }, [focusedZoneId])
+
   if (!focusedZoneId) return null
   const zone = zonesById[focusedZoneId]
   if (!zone) return null

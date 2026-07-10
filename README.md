@@ -39,9 +39,13 @@ src/
                   ControlsHint, Onboarding, ReadFallback, ZoneInteractions (the 12 zone widgets), Charts/
 ```
 
-**Controls:** desktop is WASD/arrows to fly + Space/Shift for up/down + click-drag to look. Touch is an on-screen joystick (bottom-left) + two small up/down buttons + drag-to-look anywhere else. Fly close to a glowing beacon and its zone panel opens in place, near the ship — nothing is a screen-docked sidebar anymore (see DECISIONS.md #14 for why this changed from the original rail design).
+**Controls:** desktop is WASD/arrows to fly + Space/Shift for up/down + click-drag to look. Touch is an on-screen joystick (bottom-left) + two small up/down buttons + drag-to-look anywhere else. The camera banks into turns and strafes and coasts on release rather than braking (DECISIONS.md #16), and gently pushes back out if you fly into the hull rather than clipping through it. Fly close to a glowing beacon and its zone panel opens in place, near the ship — nothing is a screen-docked sidebar (DECISIONS.md #14).
 
-**Model attribution:** `space-shuttle.glb` is sourced from [nasa/NASA-3D-Resources](https://github.com/nasa/NASA-3D-Resources) ("Space Shuttle (D)"), NASA-produced content and therefore public domain / free of copyright in the US. Worth double-checking NASA's current media usage guidelines before any commercial use, but nothing here should require attribution.
+**Audio:** synthesized, not sampled — an ambient drone, a velocity-tracking flight whoosh, and feedback chimes/clicks, all built with the raw Web Audio API (DECISIONS.md #18). Mute toggle top-left. Starts on the "Begin the journey" click since browsers block audio before a user gesture.
+
+**Performance:** per your instruction, this build doesn't budget for low-end devices — no adaptive quality throttling, DPR capped at 2.5, real shadow mapping, ambient occlusion, and a denser starfield (DECISIONS.md #17). Worth confirming actual frame rate on your target hardware once deployed; nothing here was tuned against that.
+
+**Model attribution:** `space-shuttle.glb` and its door/engine/RCS companion parts are sourced from [nasa/NASA-3D-Resources](https://github.com/nasa/NASA-3D-Resources) ("Space Shuttle (D)"), NASA-produced content and therefore public domain / free of copyright in the US. Worth double-checking NASA's current media usage guidelines before any commercial use, but nothing here should require attribution. No publicly available Space Shuttle model — including the Smithsonian's own high-fidelity scan of the real orbiter Discovery — includes real interior geometry yet (DECISIONS.md #17), which is why this is an exterior walkaround by design, not by limitation.
 
 ## Before you treat this as done
 

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
-import { AdaptiveDpr } from '@react-three/drei'
 import Scene from './scenes/Scene'
 import Onboarding from './components/Onboarding'
 import TeleportNav from './components/TeleportNav'
@@ -9,12 +8,19 @@ import MissionWatchCard from './components/MissionWatchCard'
 import TouchJoystick from './components/TouchJoystick'
 import VerticalControls from './components/VerticalControls'
 import ControlsHint from './components/ControlsHint'
+import AudioToggle from './components/AudioToggle'
 import ReadFallback from './components/ReadFallback'
 import { useInputState } from './hooks/useInputState'
 import { useJourneyStore } from './state/useJourneyStore'
+import { audioEngine } from './audio/audioEngine'
 
 function MainExperience() {
   const { inputRef, onPointerDown, onPointerMove, onPointerUp, setJoystick } = useInputState()
+  const muted = useJourneyStore((s) => s.muted)
+
+  useEffect(() => {
+    audioEngine.setMuted(muted)
+  }, [muted])
 
   return (
     <div
@@ -25,7 +31,8 @@ function MainExperience() {
       onPointerLeave={onPointerUp}
     >
       <Canvas
-        dpr={[1, 1.6]}
+        dpr={[1, 2.5]}
+        shadows="soft"
         gl={{
           antialias: true,
           powerPreference: 'high-performance',
@@ -33,9 +40,7 @@ function MainExperience() {
           toneMappingExposure: 1.15,
         }}
         camera={{ fov: 55, near: 0.1, far: 400 }}
-        performance={{ min: 0.5 }}
       >
-        <AdaptiveDpr pixelated />
         <Scene inputRef={inputRef} />
       </Canvas>
       <TeleportNav />
@@ -43,6 +48,7 @@ function MainExperience() {
       <TouchJoystick setJoystick={setJoystick} />
       <VerticalControls />
       <ControlsHint />
+      <AudioToggle />
     </div>
   )
 }

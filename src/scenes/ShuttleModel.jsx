@@ -19,6 +19,7 @@ const MODEL_ROTATION = [-Math.PI / 2, 0, -Math.PI / 2]
 const MODEL_OFFSET = [0, 2.76, -7.25]
 
 const METAL = '#D8D4C8'
+const TILE_WHITE = '#EDEDE6'
 const ACCENT_REENTRY = '#FF5A2E'
 
 function boneTransform(a, b, radius) {
@@ -82,11 +83,39 @@ function RealOrbiter() {
   return <primitive object={scene} />
 }
 
+function SubPart({ url, colorOverride }) {
+  const { scene } = useGLTF(url)
+  const patched = useMemo(() => {
+    if (!colorOverride) return scene
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshStandardMaterial({
+          color: colorOverride,
+          roughness: 0.55,
+          metalness: 0.1,
+        })
+      }
+    })
+    return scene
+  }, [scene, colorOverride])
+  return <primitive object={patched} />
+}
+
+const BASE = import.meta.env.BASE_URL
+
 export default function ShuttleModel() {
   return (
     <group name="orbiter">
       <group position={MODEL_OFFSET} rotation={MODEL_ROTATION} scale={INCH_TO_METER}>
         <RealOrbiter />
+        {/* The doors' original textures (SHUT-DOO.JPG/SHUT-DOA.JPG) aren't
+            present in NASA's own repo export — real 404s, not a bug on this
+            end (DECISIONS.md #15) — so they get the same tile-white flat
+            material the rest of the hull uses instead of a broken/default one. */}
+        <SubPart url={`${BASE}models/shuttle-door-prt.glb`} colorOverride={TILE_WHITE} />
+        <SubPart url={`${BASE}models/shuttle-door-stb.glb`} colorOverride={TILE_WHITE} />
+        <SubPart url={`${BASE}models/shuttle-eng.glb`} />
+        <SubPart url={`${BASE}models/shuttle-rcs.glb`} />
       </group>
       <Canadarm />
     </group>

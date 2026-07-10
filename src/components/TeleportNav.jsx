@@ -1,5 +1,6 @@
 import { useJourneyStore } from '../state/useJourneyStore'
 import { ZONES } from '../scenes/ZoneAnchors'
+import { audioEngine } from '../audio/audioEngine'
 
 export default function TeleportNav() {
   const navOpen = useJourneyStore((s) => s.navOpen)
@@ -11,7 +12,10 @@ export default function TeleportNav() {
     return (
       <button
         type="button"
-        onClick={toggleNav}
+        onClick={() => {
+          audioEngine.playClick()
+          toggleNav()
+        }}
         aria-label="Show zone list"
         className="fixed right-3 bottom-5 z-20 rounded-full bg-black/55 backdrop-blur border border-white/10 px-4 py-3 min-h-[44px] text-[#EDEDE6] text-xs shadow-lg"
       >
@@ -26,7 +30,10 @@ export default function TeleportNav() {
         <span className="text-[10px] uppercase tracking-wider text-[#EDEDE6]/55">Fly to a zone</span>
         <button
           type="button"
-          onClick={toggleNav}
+          onClick={() => {
+            audioEngine.playClick()
+            toggleNav()
+          }}
           aria-label="Hide zone list"
           className="text-[#EDEDE6]/50 text-xs min-w-[32px] min-h-[32px]"
         >
@@ -38,7 +45,10 @@ export default function TeleportNav() {
           <button
             key={zone.id}
             type="button"
-            onClick={() => teleportTo(zone.anchor.clone(), zone.lookAt)}
+            onClick={() => {
+              audioEngine.playWarp()
+              teleportTo(zone.anchor.clone(), zone.lookAt)
+            }}
             className={`w-full text-left px-3 py-2.5 min-h-[44px] border-b border-white/5 last:border-b-0 transition ${
               focusedZoneId === zone.id ? 'bg-[#B0001E]/25' : 'hover:bg-white/5'
             }`}

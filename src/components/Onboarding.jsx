@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import ShuttleModel from '../scenes/ShuttleModel'
 import Starfield from '../scenes/Starfield'
 import { useJourneyStore } from '../state/useJourneyStore'
+import { audioEngine } from '../audio/audioEngine'
 
 const KSC_TILT = (43.21 * Math.PI) / 180 // the real display tilt, Section 2.3
 
@@ -73,7 +74,10 @@ export default function Onboarding() {
           <button
             ref={ctaRef}
             type="button"
-            onClick={completeOnboarding}
+            onClick={() => {
+              audioEngine.init()
+              completeOnboarding()
+            }}
             className="mt-7 rounded-full bg-[#B0001E] text-[#F5F0E8] px-7 py-3.5 min-h-[44px] text-sm font-medium tracking-wide hover:brightness-110 active:scale-95 transition"
           >
             Begin the journey

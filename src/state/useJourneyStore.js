@@ -47,6 +47,10 @@ export const useJourneyStore = create((set, get) => ({
   reducedMotion: prefersReducedMotion(),
   setReducedMotion: (v) => set({ reducedMotion: v }),
 
+  // --- Audio -------------------------------------------------------------
+  muted: false,
+  toggleMuted: () => set((s) => ({ muted: !s.muted })),
+
   // --- The one earned particle moment: PSLV-C37's 104 satellites (4.5/5) --
   satelliteBurstAt: 0,
   triggerSatelliteBurst: () => set({ satelliteBurstAt: performance.now() }),
